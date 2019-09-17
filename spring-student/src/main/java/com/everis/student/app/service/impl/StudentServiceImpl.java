@@ -5,10 +5,11 @@ import com.everis.student.app.repository.StudentRepository;
 import com.everis.student.app.service.StudentService;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-
+@Service
 public class StudentServiceImpl implements StudentService {
 
   @Autowired

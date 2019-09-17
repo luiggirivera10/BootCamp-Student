@@ -28,7 +28,7 @@ public class SpringStudentApplicationTests {
   private StudentRepository service;
 
   @Test
-  public void findAll() {
+  public void findAllTest() {
     client.get().uri("/api/v1.0/students")
          .accept(MediaType.APPLICATION_JSON_UTF8)
          .exchange().expectStatus().isOk()
@@ -44,7 +44,7 @@ public class SpringStudentApplicationTests {
   }
 
   @Test
-public void show() {
+public void findByIdTest() {
     Student student = service.obtenerPorName("Flor").block();
 
     client.get().uri("/api/v1.0/students/{id}", Collections.singletonMap("id", student.getId()))
@@ -62,10 +62,8 @@ public void show() {
   }
 
   @Test
-  public void crearTest() {
-    Student student = new Student(
-         "8", "Jefferson", "Masculino", new Date(),
-         "DNI", "74747412", new Date());
+  public void newTest() {
+    Student student = new Student("Martinox", "Masculino", new Date(),"DNI", "00000000");
     client.post().uri("/api/v1.0/students")
        .contentType(MediaType.APPLICATION_JSON_UTF8)
        .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -74,16 +72,14 @@ public void show() {
        .expectStatus().isOk()
        .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
        .expectBody()
-       .jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Jefferson");
+       .jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Martinox");
   }
 
-  @Test
-  public void editarTest() {
-    Student student = service.obtenerPorName("Jefferson").block();
-    Student studentEditado = new Student(
-        "8", "Jeffer", "Masculino", new Date(),
-        "DNI", "74306051", new Date());
 
+  @Test
+  public void updateTest() {
+    Student student = service.obtenerPorName("Robert").block();
+    Student studentEditado = new Student("Robertxxx", "Masculino", new Date(),"DNI", "20090806");
     client.put().uri("/api/v1.0/students/{id}",Collections.singletonMap("id", student.getId()))
         .contentType(MediaType.APPLICATION_JSON_UTF8)
         .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -93,13 +89,34 @@ public void show() {
      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
      .expectBody()
      .jsonPath("$.id").isNotEmpty()
-     .jsonPath("$.name").isEqualTo("Jeffer")
-     .jsonPath("$.numberID").isEqualTo("74306051");
+     .jsonPath("$.name").isEqualTo("Robertxxx")
+     .jsonPath("$.numberID").isEqualTo("20090806");
   }
 
   @Test
-  public void eliminarTest() {
-    Student student = service.obtenerPorName("Jian").block();
+  public void findByNameTest() {
+    Student student = service.obtenerPorName("Lucia").block();
+    client.get()
+        .uri("/api/v1.0/students/nombre/{name}",Collections.singletonMap("name", student.getName()))
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody().jsonPath("$.name").isEqualTo("Lucia");
+  }
+
+  @Test
+  public void findByNumberIdTest() {
+    Student student = service.obtenerPorName("Lucia").block();
+    client.get()
+        .uri("/api/v1.0/students/doc/{numberID}",
+        Collections.singletonMap("numberID", student.getNumberID()))
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody().jsonPath("$.numberID").isEqualTo("20191010");
+  }
+
+  @Test
+  public void deleteTest() {
+    Student student = service.findByNumberID("00000001").block();
     client.delete()
         .uri("/api/v1.0/students/{id}",Collections.singletonMap("id", student.getId()))
         .exchange()
@@ -108,27 +125,6 @@ public void show() {
         .isEmpty();
   }
 
-
-  @Test
-  public void buscarNombre() {
-    Student student = service.obtenerPorName("Luiggi").block();
-    client.get()
-        .uri("/api/v1.0/students/nombre/{name}",Collections.singletonMap("name", student.getName()))
-        .exchange()
-        .expectStatus().isOk()
-        .expectBody().jsonPath("$.name").isEqualTo("Luiggi");
-  }
-  
-  @Test
-  public void buscarDni() {
-    Student student = service.obtenerPorName("Brayan").block();
-    client.get()
-        .uri("/api/v1.0/students/doc/{numberID}",
-        Collections.singletonMap("numberID", student.getNumberID()))
-        .exchange()
-        .expectStatus().isOk()
-        .expectBody().jsonPath("$.numberID").isEqualTo("20181010");
-  }
   /* FALTA CORREGIR
   @Test
   public void buscarBetweenDate() {

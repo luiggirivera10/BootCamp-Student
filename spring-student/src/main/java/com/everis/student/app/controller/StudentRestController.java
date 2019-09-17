@@ -1,7 +1,7 @@
 package com.everis.student.app.controller;
 
 import com.everis.student.app.bean.Student;
-import com.everis.student.app.repository.StudentRepository;
+import com.everis.student.app.service.StudentService;
 import java.util.Date;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -27,12 +27,12 @@ import reactor.core.publisher.Mono;
 public class StudentRestController {
 
   @Autowired
-  private StudentRepository studentRep;
+  private StudentService studentRep;
 
   private static final Logger log = LoggerFactory.getLogger(StudentRestController.class);
   /**
 
-   * .
+   * Metodo listar todo.
 
    */
   @GetMapping("/students")
@@ -47,41 +47,56 @@ public class StudentRestController {
   }
   /**
 
-   * .
+   * Metodo para buscar por ID.
 
    */
   @GetMapping("/students/{id}")
- public Mono<Student> show(@PathVariable String id) {
+ public Mono<Student> findById(@PathVariable String id) {
     Flux<Student> students = studentRep.findAll();
-    //tenemos un mono y con el next nos retorna el primero
     Mono<Student> student = students.filter(s -> s.getId().equals(id))
                         .next().doOnNext(stu -> log.info(stu.getName()));
     return student;
   }
+  /**
 
+   * Metodo para buscar por nombre devuelve una lista.
+
+   */
   @GetMapping("/students/name/{name}")
  public Flux<Student> findByName(@PathVariable ("name") String name) {
     return studentRep.findByName(name);
   }
+  /**
 
+   * Metodo para buscar por nombre devuelve un solo documento.
+
+   */
   @GetMapping("/students/nombre/{name}")
-  public Mono<Student> obtenerByName(@PathVariable ("name") String name) {
+  public Mono<Student> getByName(@PathVariable ("name") String name) {
     return studentRep.obtenerPorName(name);
   }
+  /**
 
+   * Metodo para buscar por DNI.
+
+   */
   @GetMapping("/students/doc/{numberID}")
  public Mono<Student> findByNumberID(@PathVariable ("numberID") String numberID) {
     return studentRep.findByNumberID(numberID);
   }
+  /**
 
+   * Metodo para crear.
+
+   */
   @PostMapping("/students")
-  public Mono<Student> newStudent(@RequestBody Student student) {
+  public Mono<Student> newStudent(@Valid @RequestBody Student student) {
     return studentRep.save(student);
   }
 
   /**
 
-   * .
+   * Metodo para modificar.
 
    */
   @PutMapping("/students/{id}")
@@ -101,7 +116,7 @@ public class StudentRestController {
   }
   /**
 
-   * .
+   * Metodo para eliminar.
 
    */
   @DeleteMapping("/students/{id}")
