@@ -11,7 +11,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "88885588",
 "createdAt" : ISODate("2019-09-16T21:18:13.418Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc2600eb361c50a93f08"),
@@ -21,7 +20,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "98989898",
 "createdAt" : ISODate("2019-09-16T21:18:30.255Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc3100eb361c50a93f09"),
@@ -31,7 +29,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20191010",
 "createdAt" : ISODate("2019-09-16T21:18:41.873Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc3e00eb361c50a93f0a"),
@@ -41,7 +38,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20081010",
 "createdAt" : ISODate("2019-09-16T21:18:54.403Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc4600eb361c50a93f0b"),
@@ -51,7 +47,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20071010",
 "createdAt" : ISODate("2019-09-16T21:19:02.719Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc5000eb361c50a93f0c"),
@@ -61,7 +56,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20061010",
 "createdAt" : ISODate("2019-09-16T21:19:12.674Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc5a00eb361c50a93f0d"),
@@ -71,7 +65,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20051010",
 "createdAt" : ISODate("2019-09-16T21:19:22.956Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc6500eb361c50a93f0e"),
@@ -81,7 +74,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20041010",
 "createdAt" : ISODate("2019-09-16T21:19:33.652Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc6e00eb361c50a93f0f"),
@@ -91,7 +83,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20031010",
 "createdAt" : ISODate("2019-09-16T21:19:42.792Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc7a00eb361c50a93f10"),
@@ -101,7 +92,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20021010",
 "createdAt" : ISODate("2019-09-16T21:19:54.331Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc8700eb361c50a93f11"),
@@ -111,7 +101,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20011010",
 "createdAt" : ISODate("2019-09-16T21:20:07.610Z")
-
 },
 {
 "_id" : ObjectId("5d7ffc9b00eb361c50a93f12"),
@@ -121,7 +110,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20171010",
 "createdAt" : ISODate("2019-09-16T21:20:27.782Z")
-
 },
 {
 "_id" : ObjectId("5d7ffca500eb361c50a93f13"),
@@ -131,7 +119,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20181010",
 "createdAt" : ISODate("2019-09-16T21:20:37.951Z")
-
 },
 {
 "_id" : "8",
@@ -141,7 +128,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "74306051",
 "createdAt" : ISODate("2019-09-17T14:40:49.872Z")
-
 },
 {
 "_id" : "9",
@@ -151,7 +137,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "19771977",
 "createdAt" : ISODate("2019-09-17T15:09:43.449Z")
-
 },
 {
 "_id" : ObjectId("5d80f9e900eb36410cf065c4"),
@@ -161,7 +146,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "20090806",
 "createdAt" : ISODate("2019-09-17T15:21:13.431Z")
-
 },
 {
 "_id" : ObjectId("5d8138d200eb363838b4d738"),
@@ -171,7 +155,6 @@ db.students.insert([
 "typeID" : "DNI",
 "numberID" : "00000001",
 "createdAt" : ISODate("2019-09-17T19:49:38.804Z")
-
 },
 {
 "_id" : ObjectId("5d8153cb00eb36154036018c"),
