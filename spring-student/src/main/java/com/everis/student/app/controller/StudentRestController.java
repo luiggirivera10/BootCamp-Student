@@ -22,6 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Servicio listar todo.
+ *
+ */
 @RestController
 @RequestMapping("/api/v1.0")
 public class StudentRestController {
@@ -30,10 +34,9 @@ public class StudentRestController {
   private StudentService studentRep;
 
   private static final Logger log = LoggerFactory.getLogger(StudentRestController.class);
+
   /**
-
-   * Metodo listar todo.
-
+   * Servicio listar todo.
    */
   @GetMapping("/students")
  public Flux<Student> findAll() {
@@ -47,7 +50,7 @@ public class StudentRestController {
   }
   /**
 
-   * Metodo para buscar por ID.
+   * Servicio buscar por ID.
 
    */
   @GetMapping("/students/{id}")
@@ -59,44 +62,48 @@ public class StudentRestController {
   }
   /**
 
-   * Metodo para buscar por nombre devuelve una lista.
+   * Servicio para buscar por nombre devuelve una lista.
 
    */
   @GetMapping("/students/name/{name}")
  public Flux<Student> findByName(@PathVariable ("name") String name) {
-    return studentRep.findByName(name);
+    return studentRep.findByName(name).doOnNext(stu -> log.info(stu.getName()));
   }
   /**
 
-   * Metodo para buscar por nombre devuelve un solo documento.
+   * Servicio para buscar por nombre devuelve un solo documento.
 
    */
   @GetMapping("/students/nombre/{name}")
   public Mono<Student> getByName(@PathVariable ("name") String name) {
-    return studentRep.obtenerPorName(name);
+    return studentRep.obtenerPorName(name)
+    .doOnNext(stu -> log.info("getByName : " + stu.getName() + stu.getNumberID()));
   }
   /**
 
-   * Metodo para buscar por DNI.
+   * Servicio para buscar por DNI.
 
    */
   @GetMapping("/students/doc/{numberID}")
  public Mono<Student> findByNumberID(@PathVariable ("numberID") String numberID) {
-    return studentRep.findByNumberID(numberID);
+    return studentRep.findByNumberID(numberID).doOnNext(
+        stu -> log.info(stu.getName() + " - " 
+        + stu.getNumberID()));
   }
   /**
 
-   * Metodo para crear.
+   * Servicio para crear.
 
    */
   @PostMapping("/students")
   public Mono<Student> newStudent(@Valid @RequestBody Student student) {
-    return studentRep.save(student);
+    return studentRep.save(student)
+    .doOnNext(stu -> log.info("+ new students : " + stu.getName()));
   }
 
   /**
 
-   * Metodo para modificar.
+   * Servicio para modificar.
 
    */
   @PutMapping("/students/{id}")
@@ -111,12 +118,12 @@ public class StudentRestController {
                   existingStudent.setNumberID(student.getNumberID());
                   return studentRep.save(existingStudent);
                 })
-                .map(updatedStudent -> new ResponseEntity<>(updatedStudent, HttpStatus.OK))
+                .map(updatedStudent -> new ResponseEntity<>(updatedStudent, HttpStatus.CREATED))
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
   /**
 
-   * Metodo para eliminar.
+   * Servicio para eliminar.
 
    */
   @DeleteMapping("/students/{id}")
@@ -130,7 +137,7 @@ public class StudentRestController {
 
   /**
 
-   * .
+   * Servicion para buscar entre fechas.
 
    */
   @GetMapping("/students/date/{birthdate}/{birthdate1}")
