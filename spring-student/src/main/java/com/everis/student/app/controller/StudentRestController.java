@@ -69,16 +69,7 @@ public class StudentRestController {
  public Flux<Student> findByName(@PathVariable ("name") String name) {
     return studentRep.findByName(name).doOnNext(stu -> log.info(stu.getName()));
   }
-  /**
 
-   * Servicio para buscar por nombre devuelve un solo documento.
-
-   */
-  @GetMapping("/students/nombre/{name}")
-  public Mono<Student> getByName(@PathVariable ("name") String name) {
-    return studentRep.obtenerPorName(name)
-    .doOnNext(stu -> log.info("getByName : " + stu.getName() + stu.getNumberID()));
-  }
   /**
 
    * Servicio para buscar por DNI.
