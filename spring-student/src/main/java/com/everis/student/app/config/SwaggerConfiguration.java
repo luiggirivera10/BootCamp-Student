@@ -16,7 +16,6 @@ public class SwaggerConfiguration {
 
   /**
  * SwaggerStudentApi.
- * @return
  */
   @Bean
   public Docket studentApi() {
