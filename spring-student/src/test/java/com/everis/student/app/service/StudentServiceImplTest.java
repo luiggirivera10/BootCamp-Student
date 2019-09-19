@@ -18,20 +18,35 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+/**
+ * .
+ * @author lriveras
+ *
+ */
 @RunWith(SpringRunner.class)
 @AutoConfigureWebTestClient
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+
 public class StudentServiceImplTest {
-  
+
+  /**
+   * Inject StudentRepository.
+   */
   @Mock
   private StudentRepository studentRepository;
-  
+
+  /**
+   * Inject StudentServiceImpl.
+   */
   @InjectMocks
   private StudentServiceImpl studentService;
-  
+
+  /**
+   * finaAll.
+   */
   @Test
-  public void findAll() {
-    Student student = new Student();
+  public void findAll_ServiceImplTest() {
+    final Student student = new Student();
     student.setName("Walter");
     student.setGender("Masculino");
     student.setBirthdate(new Date());
@@ -39,14 +54,16 @@ public class StudentServiceImplTest {
     student.setNumberID("55556666");
     
     when(studentService.findAll()).thenReturn(Flux.just(student));
-    Flux<Student> actua = studentService.findAll();
+    final Flux<Student> actua = studentService.findAll();
     assertResults(actua, student);
   }
-  
-  
+
+  /**
+   * findById-Exist.
+   */
   @Test
-  public void findById_exist() {
-    Student parent2 = new Student();
+  public void findById_exist_ServiceImplTest() {
+    final Student parent2 = new Student();
     parent2.setId("102");
     parent2.setName("Ramon");
     parent2.setGender("Masculino");
@@ -54,13 +71,16 @@ public class StudentServiceImplTest {
     parent2.setTypeID("DNI");
     parent2.setNumberID("10210210");
     when(studentRepository.findById(parent2.getId())).thenReturn(Mono.just(parent2));
-    Mono<Student> actual = studentRepository.findById(parent2.getId());
+    final Mono<Student> actual = studentRepository.findById(parent2.getId());
     assertResults(actual, parent2);
   }
-  
+
+  /**
+   * findById-not-Exist.
+   */
   @Test
-  public void findById_not_exist() {
-    Student s = new Student();
+  public void findById_not_exist_ServiceImplTest() {
+    final Student s = new Student();
     s.setId("101");
     s.setName("Tito");
     s.setGender("Masculino");
@@ -68,14 +88,16 @@ public class StudentServiceImplTest {
     s.setTypeID("DNI");
     s.setNumberID("10110110");
     when(studentRepository.findById(s.getId())).thenReturn(Mono.empty());
-    Mono<Student> actual = studentRepository.findById(s.getId());
+    final Mono<Student> actual = studentRepository.findById(s.getId());
     assertResults(actual);
   }
   
-  
+  /**
+   * save.
+   */
   @Test
-  public void save() {
-    Student s = new Student();
+  public void saveServiceImplTest() {
+    final Student s = new Student();
     s.setId("10");
     s.setName("Victor");
     s.setGender("Masculino");
@@ -84,14 +106,16 @@ public class StudentServiceImplTest {
     s.setNumberID("44443333");
     s.setCreatedAt(new Date());
     when(studentRepository.save(s)).thenReturn(Mono.just(s));
-    Mono<Student> actual = studentService.save(s);
+    final Mono<Student> actual = studentService.save(s);
     assertResults(actual, s);
   }
   
-  
+  /**
+   * deleteTest.
+   */
   @Test
-  public void delete() {
-    Student stud = new Student();
+  public void deleteServiceImplTest() {
+    final Student stud = new Student();
     stud.setId("10");
     stud.setName("Victor");
     stud.setGender("Masculino");
@@ -102,10 +126,13 @@ public class StudentServiceImplTest {
     
     when(studentRepository.delete(stud)).thenReturn(Mono.empty());
   }
-  
+
+  /**
+   * findByNumberID.
+   */
   @Test
-  public void findBynNumberID() {
-    Student s = new Student();
+  public void findBynNumberID_ServiceImplTest() {
+    final Student s = new Student();
     s.setId("dekweowe");
     s.setName("cristohper");
     s.setGender("male");
@@ -114,13 +141,16 @@ public class StudentServiceImplTest {
     s.setNumberID("736723727");
     final String numberID = "736723727";
     when(studentRepository.findByNumberID(numberID)).thenReturn(Mono.just(s));
-    Mono<Student> actual = studentService.findByNumberID(numberID);
+    final Mono<Student> actual = studentService.findByNumberID(numberID);
     assertResults(actual,s);
   }
 
+  /**
+   * findByName.
+   */
   @Test
-  public void findByName() {
-    Student s = new Student();
+  public void findByName_ServiceImplTest() {
+    final Student s = new Student();
     s.setId("dekweowe");
     s.setName("cristohper");
     s.setGender("male");
@@ -129,10 +159,13 @@ public class StudentServiceImplTest {
     s.setNumberID("736723727");
     final String name = "736723727";
     when(studentRepository.findByName(name)).thenReturn(Flux.just(s));
-    Flux<Student> actual = studentService.findByName(name);
+    final Flux<Student> actual = studentService.findByName(name);
     assertResults(actual,s);
   }
-  
+
+  /**
+   * assertResults.
+   */
   private void assertResults(Publisher<Student> publisher, Student... expectedProducts) {
     StepVerifier
         .create(publisher)

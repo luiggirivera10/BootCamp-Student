@@ -8,6 +8,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,13 +18,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
+/**
+ * .
+ * @author lriveras
+ *
+ */
 @AutoConfigureWebTestClient
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class StudentRestControllerTest {
+
+  /**
+ * InjectWebTestClient.
+ */
   @Autowired
   private WebTestClient client;
 
+  /**
+ * Log.
+ */
+  private static final Logger log = LoggerFactory.getLogger(StudentRestController.class);
+  /**
+ * Inject SetudentRepository.
+ */
   @Autowired
   private StudentRepository service;
 
@@ -34,7 +52,7 @@ public class StudentRestControllerTest {
          .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
          .expectBodyList(Student.class)
          .consumeWith(response -> {
-           List<Student> students = response.getResponseBody();
+           final List<Student> students = response.getResponseBody();
            students.forEach(s -> {
              System.out.println(s.getName() + " - " + s.getNumberID());
            });
@@ -42,28 +60,38 @@ public class StudentRestControllerTest {
          });
   }
 
+  /**
+ * findbyId.
+ */
   @Test
 public void findByIdTest() {
-    Student student = service.obtenerPorName("Flor").block();
-
-    client.get().uri("/api/v1.0/students/{id}", Collections.singletonMap("id", student.getId()))
-        .accept(MediaType.APPLICATION_JSON_UTF8)
-        .exchange()
-        .expectStatus().isOk()
-        .expectHeader()
-        .contentType(MediaType.APPLICATION_JSON_UTF8)
-        .expectBody(Student.class).consumeWith(response -> {
-          Student st = response.getResponseBody();
-          Assertions.assertThat(st.getId()).isNotEmpty();
-          Assertions.assertThat(st.getId().length() > 0).isTrue();
-          Assertions.assertThat(st.getName()).isEqualTo("Flor");
-        });
+    final Student student = service.findName("Flor").block();
+    if (student != null) {
+      client.get().uri("/api/v1.0/students/{id}", Collections.singletonMap("id", student.getId()))
+          .accept(MediaType.APPLICATION_JSON_UTF8)
+          .exchange()
+          .expectStatus().isOk()
+          .expectHeader()
+          .contentType(MediaType.APPLICATION_JSON_UTF8)
+          .expectBody(Student.class).consumeWith(response -> {
+            final Student studnt = response.getResponseBody();
+            Assertions.assertThat(studnt.getId()).isNotEmpty();
+            Assertions.assertThat(studnt.getId().length() > 0).isTrue();
+            Assertions.assertThat(studnt.getName()).isEqualTo("Flor");
+          });
+    } else {
+      log.error("No se encontraron datos!");
+    }
   }
 
+  /**
+ * newTest.
+ */
   @Test
   public void newTest() {
-    Student student = new Student("Martinox", "Masculino", new Date(),"DNI", "00000000");
-    client.post().uri("/api/v1.0/students")
+    final Student student = new Student("Martinox", "Masculino", new Date(),"DNI", "00000000");
+    if (student != null) {
+      client.post().uri("/api/v1.0/students")
        .contentType(MediaType.APPLICATION_JSON_UTF8)
        .accept(MediaType.APPLICATION_JSON_UTF8)
        .body(Mono.just(student), Student.class)
@@ -72,14 +100,20 @@ public void findByIdTest() {
        .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
        .expectBody()
        .jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Martinox");
+    }
   }
 
-
+  /**
+   * updateTest.
+   */
   @Test
   public void updateTest() {
-    Student student = service.obtenerPorName("Robert").block();
-    Student studentEditado = new Student("Robertxxx", "Masculino", new Date(),"DNI", "20090806");
-    client.put().uri("/api/v1.0/students/{id}",Collections.singletonMap("id", student.getId()))
+    final Student student = service.findName("Robertxxx").block();
+    final Student studentEditado = new Student("Robert", "Masculino", 
+          new Date(),"DNI", "20090806");
+    if (student != null) {
+      client.put().uri("/api/v1.0/students/{id}",
+        Collections.singletonMap("id", student.getId()))
         .contentType(MediaType.APPLICATION_JSON_UTF8)
         .accept(MediaType.APPLICATION_JSON_UTF8)
      .body(Mono.just(studentEditado), Student.class)
@@ -88,39 +122,64 @@ public void findByIdTest() {
      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
      .expectBody()
      .jsonPath("$.id").isNotEmpty()
-     .jsonPath("$.name").isEqualTo("Robertxxx")
+     .jsonPath("$.name").isEqualTo("Robert")
      .jsonPath("$.numberID").isEqualTo("20090806");
+    } else {
+      log.error("No se encontraron datos!");
+    }
+
   }
 
+  /**
+   * findByNameTest.
+   */
   @Test
   public void findByNameTest() {
-    Student student = service.obtenerPorName("Lucia").block();
-    client.get()
+    final Student student = service.findName("Lucia").block();
+    if (student != null) {
+      client.get()
         .uri("/api/v1.0/students/nombre/{name}",Collections.singletonMap("name", student.getName()))
         .exchange()
         .expectStatus().isOk()
         .expectBody().jsonPath("$.name").isEqualTo("Lucia");
+    } else {
+      log.error("No se encontraron datos!");
+    }
   }
 
+  /**
+   * findByNumberIdTest.
+   */
   @Test
   public void findByNumberIdTest() {
-    Student student = service.obtenerPorName("Lucia").block();
-    client.get()
+    final Student student = service.findName("Lucia").block();
+    if (student != null) {
+      client.get()
         .uri("/api/v1.0/students/doc/{numberID}",
         Collections.singletonMap("numberID", student.getNumberID()))
         .exchange()
         .expectStatus().isOk()
         .expectBody().jsonPath("$.numberID").isEqualTo("20191010");
+    } else {
+      log.error("No se encontraron datos!");
+    }
   }
 
+  /**
+   * deleteTest.
+   */
   @Test
   public void deleteTest() {
-    Student student = service.findByNumberID("00000001").block();
-    client.delete()
+    final Student student = service.findByNumberID("00000001").block();
+    if (student != null) {
+      client.delete()
         .uri("/api/v1.0/students/{id}",Collections.singletonMap("id", student.getId()))
         .exchange()
         .expectStatus().isOk()
         .expectBody()
         .isEmpty();
+    } else {
+      log.error("No se encontraron datos!");
+    }
   }
 }

@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk
+VOLUME /tmp
+ADD /target/student.jar student.jar
+RUN sh -c 'touch /student.jar'
+ENTRYPOINT ["java", "-Dspring.data.mongodb.uri=mongodb://spring-student-mongo/students","-Djava.security.egd=file:/dev/./urandom","-jar","/student.jar"]

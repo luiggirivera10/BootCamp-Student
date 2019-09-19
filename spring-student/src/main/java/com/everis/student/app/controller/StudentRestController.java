@@ -30,9 +30,14 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1.0")
 public class StudentRestController {
 
+  /**
+ * Inject StudentService.
+ */
   @Autowired
   private StudentService studentRep;
-
+  /**
+ * log.
+ */
   private static final Logger log = LoggerFactory.getLogger(StudentRestController.class);
 
   /**
@@ -40,9 +45,9 @@ public class StudentRestController {
    */
   @GetMapping("/students")
  public Flux<Student> findAll() {
-    Flux<Student> students = studentRep.findAll()
+    final Flux<Student> students = studentRep.findAll()
                 .map(student -> {
-                  student.setName(student.getName().toUpperCase());
+                  student.setName(student.getName());
                   return student;
                 })
         .doOnNext(stu -> log.info(stu.getName()));
@@ -54,9 +59,9 @@ public class StudentRestController {
 
    */
   @GetMapping("/students/{id}")
- public Mono<Student> findById(@PathVariable String id) {
-    Flux<Student> students = studentRep.findAll();
-    Mono<Student> student = students.filter(s -> s.getId().equals(id))
+ public Mono<Student> findById(@PathVariable final String id) {
+    final Flux<Student> students = studentRep.findAll();
+    final Mono<Student> student = students.filter(s -> s.getId().equals(id))
                         .next().doOnNext(stu -> log.info(stu.getName()));
     return student;
   }
@@ -66,8 +71,17 @@ public class StudentRestController {
 
    */
   @GetMapping("/students/name/{name}")
- public Flux<Student> findByName(@PathVariable ("name") String name) {
+ public Flux<Student> findByName(@PathVariable ("name") final String name) {
     return studentRep.findByName(name).doOnNext(stu -> log.info(stu.getName()));
+  }
+
+  /**
+ * .
+ */
+  @GetMapping("/students/nombre/{name}")
+  public Mono<Student> getByName(@PathVariable ("name") final String name) {
+    return studentRep.obtenerPorName(name)
+    .doOnNext(stu -> log.info("getByName : " + stu.getName() + stu.getNumberID()));
   }
 
   /**
@@ -76,18 +90,19 @@ public class StudentRestController {
 
    */
   @GetMapping("/students/doc/{numberID}")
- public Mono<Student> findByNumberID(@PathVariable ("numberID") String numberID) {
+ public Mono<Student> findByNumberID(@PathVariable ("numberID") final String numberID) {
     return studentRep.findByNumberID(numberID).doOnNext(
         stu -> log.info(stu.getName() + " - " 
         + stu.getNumberID()));
   }
+
   /**
 
    * Servicio para crear.
 
    */
   @PostMapping("/students")
-  public Mono<Student> newStudent(@Valid @RequestBody Student student) {
+  public Mono<Student> newStudent(@Valid @RequestBody final Student student) {
     return studentRep.save(student)
     .doOnNext(stu -> log.info("+ new students : " + stu.getName()));
   }
@@ -98,8 +113,8 @@ public class StudentRestController {
 
    */
   @PutMapping("/students/{id}")
-    public Mono<ResponseEntity<Student>> updateStudent(@PathVariable(value = "id") String id,
-                                                   @Valid @RequestBody Student student) {
+    public Mono<ResponseEntity<Student>> updateStudent(@PathVariable(value = "id") final String id,
+                                                   @Valid @RequestBody final Student student) {
     return studentRep.findById(id)
                 .flatMap(existingStudent -> {
                   existingStudent.setName(student.getName());
@@ -112,13 +127,14 @@ public class StudentRestController {
                 .map(updatedStudent -> new ResponseEntity<>(updatedStudent, HttpStatus.CREATED))
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
+
   /**
 
    * Servicio para eliminar.
 
    */
   @DeleteMapping("/students/{id}")
-  public Mono<ResponseEntity<Void>> deleteStudent(@PathVariable(value = "id") String id) {
+  public Mono<ResponseEntity<Void>> deleteStudent(@PathVariable(value = "id") final String id) {
     return studentRep.findById(id)
     .flatMap(existingStudent ->
  studentRep.delete(existingStudent)
@@ -133,8 +149,8 @@ public class StudentRestController {
    */
   @GetMapping("/students/date/{birthdate}/{birthdate1}")
   public Flux<Student> findByBirthdate(@PathVariable("birthdate")
-      @DateTimeFormat(iso = ISO.DATE) Date birthdate,@PathVariable("birthdate1")
-      @DateTimeFormat(iso = ISO.DATE) Date birthdate1) {
+      @DateTimeFormat(iso = ISO.DATE) final Date birthdate,@PathVariable("birthdate1")
+      @DateTimeFormat(iso = ISO.DATE) final Date birthdate1) {
     return studentRep.findByBirthdateBetween(birthdate, birthdate1);
   }
 }

@@ -1,0 +1,122 @@
+con = new Mongo()
+db = conn.getDB("Students")
+db.createCollection("students")
+
+db.students.insert([
+{
+        "_id" : ObjectId("5d7ffc1500eb361c50a93f07"),
+        "name" : "Flor",
+        "gender" : "Femenino",
+        "birthdate" : ISODate("2017-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "88885588",
+        "createdAt" : ISODate("2019-09-16T21:18:13.418Z")
+},
+{
+        "_id" : ObjectId("5d7ffc4600eb361c50a93f0b"),
+        "name" : "Romina",
+        "gender" : "Femenino",
+        "birthdate" : ISODate("2007-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20071010",
+        "createdAt" : ISODate("2019-09-16T21:19:02.719Z")
+},
+{
+        "_id" : ObjectId("5d7ffc5000eb361c50a93f0c"),
+        "name" : "Estefany",
+        "gender" : "Femenino",
+        "birthdate" : ISODate("2006-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20061010",
+        "createdAt" : ISODate("2019-09-16T21:19:12.674Z")
+},
+{
+        "_id" : ObjectId("5d7ffc6500eb361c50a93f0e"),
+        "name" : "Fiorella",
+        "gender" : "Femenino",
+        "birthdate" : ISODate("2004-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20041010",
+        "createdAt" : ISODate("2019-09-16T21:19:33.652Z")
+},
+{
+        "_id" : ObjectId("5d7ffc9b00eb361c50a93f12"),
+        "name" : "Luiggi",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2017-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20171010",
+        "createdAt" : ISODate("2019-09-16T21:20:27.782Z")
+},
+{
+        "_id" : ObjectId("5d7ffca500eb361c50a93f13"),
+        "name" : "Brayan",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2018-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20181010",
+        "createdAt" : ISODate("2019-09-16T21:20:37.951Z")
+},
+{
+        "_id" : "8",
+        "name" : "Jeffer",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2019-09-17T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "74306051",
+        "createdAt" : ISODate("2019-09-17T14:40:49.872Z")
+},
+{
+        "_id" : "9",
+        "name" : "Randyx",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2019-09-17T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "19771977",
+        "createdAt" : ISODate("2019-09-17T15:09:43.449Z")
+},
+{
+        "_id" : ObjectId("5d80f9e900eb36410cf065c4"),
+        "name" : "Robert",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2019-09-18T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20090806",
+        "createdAt" : ISODate("2019-09-17T15:21:13.431Z")
+},
+{
+        "_id" : ObjectId("5d8153cb00eb36154036018c"),
+        "name" : "Forlan",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("1997-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "19971010",
+        "createdAt" : ISODate("2019-09-17T21:44:43.730Z")
+},
+{
+        "_id" : ObjectId("5d824a6b00eb363f88898e8f"),
+        "name" : "Alejandro",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("1994-10-10T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "19941010",
+        "createdAt" : ISODate("2019-09-18T15:16:58.991Z")
+},
+{
+        "_id" : ObjectId("5d824ead00eb362660bc3133"),
+        "name" : "Luffy",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2000-01-11T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "20000111",
+        "createdAt" : ISODate("2019-09-18T15:35:09.864Z")
+},
+{
+        "_id" : ObjectId("5d82a818f6cac433048068a5"),
+        "name" : "Martino",
+        "gender" : "Masculino",
+        "birthdate" : ISODate("2019-09-18T00:00:00Z"),
+        "typeID" : "DNI",
+        "numberID" : "00000001",
+        "createdAt" : ISODate("2019-09-18T21:56:40.241Z")
+}])
