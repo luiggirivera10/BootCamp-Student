@@ -71,17 +71,19 @@ public class StudentRestController {
 
    */
   @GetMapping("/students/name/{name}")
- public Flux<Student> findByName(@PathVariable ("name") final String name) {
-    return studentRep.findByName(name).doOnNext(stu -> log.info(stu.getName()));
+  public Flux<Student> findByName(@PathVariable ("name") final String name) {
+    return studentRep.findByName(name)
+        .doOnNext(stu -> log.info(stu.getName()));
   }
 
   /**
  * .
  */
   @GetMapping("/students/nombre/{name}")
-  public Mono<Student> getByName(@PathVariable ("name") final String name) {
-    return studentRep.obtenerPorName(name)
-    .doOnNext(stu -> log.info("getByName : " + stu.getName() + stu.getNumberID()));
+  public Mono<ResponseEntity<Student>> getByName(@PathVariable ("name") final String name) {
+    return studentRep.obtenerPorName(name).doOnNext(stu -> log.info(stu.getName()))
+              .map(student -> new ResponseEntity<>(student, HttpStatus.FOUND))
+              .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
   /**
@@ -90,10 +92,11 @@ public class StudentRestController {
 
    */
   @GetMapping("/students/doc/{numberID}")
- public Mono<Student> findByNumberID(@PathVariable ("numberID") final String numberID) {
-    return studentRep.findByNumberID(numberID).doOnNext(
-        stu -> log.info(stu.getName() + " - " 
-        + stu.getNumberID()));
+  public Mono<ResponseEntity<Student>> 
+      findByNumberID(@PathVariable ("numberID") final String numberID) {
+    return studentRep.findByNumberID(numberID)
+              .map(student -> new ResponseEntity<>(student, HttpStatus.FOUND))
+              .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
   /**
@@ -102,9 +105,10 @@ public class StudentRestController {
 
    */
   @PostMapping("/students")
-  public Mono<Student> newStudent(@Valid @RequestBody final Student student) {
+  public Mono<ResponseEntity<Student>> newStudent(@Valid @RequestBody final Student student) {
     return studentRep.save(student)
-    .doOnNext(stu -> log.info("+ new students : " + stu.getName()));
+              .map(addStudent -> new ResponseEntity<>(addStudent, HttpStatus.CREATED))
+              .defaultIfEmpty(new ResponseEntity<>(HttpStatus.CONFLICT));
   }
 
   /**

@@ -37,7 +37,7 @@ public class StudentRestControllerTest {
   /**
  * Log.
  */
-  private static final Logger log = LoggerFactory.getLogger(StudentRestController.class);
+  private static final Logger log = LoggerFactory.getLogger(StudentRestControllerTest.class);
   /**
  * Inject SetudentRepository.
  */
@@ -89,14 +89,14 @@ public void findByIdTest() {
  */
   @Test
   public void newTest() {
-    final Student student = new Student("Martinox", "Masculino", new Date(),"DNI", "00000000");
+    final Student student = new Student("Martino", "Masculinox", new Date(),"DNI", "00000000");
     if (student != null) {
       client.post().uri("/api/v1.0/students")
        .contentType(MediaType.APPLICATION_JSON_UTF8)
        .accept(MediaType.APPLICATION_JSON_UTF8)
        .body(Mono.just(student), Student.class)
        .exchange()
-       .expectStatus().isOk()
+       .expectStatus().isCreated()
        .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
        .expectBody()
        .jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Martinox");
@@ -140,7 +140,7 @@ public void findByIdTest() {
       client.get()
         .uri("/api/v1.0/students/nombre/{name}",Collections.singletonMap("name", student.getName()))
         .exchange()
-        .expectStatus().isOk()
+        .expectStatus().isFound()
         .expectBody().jsonPath("$.name").isEqualTo("Lucia");
     } else {
       log.error("No se encontraron datos!");
@@ -158,7 +158,7 @@ public void findByIdTest() {
         .uri("/api/v1.0/students/doc/{numberID}",
         Collections.singletonMap("numberID", student.getNumberID()))
         .exchange()
-        .expectStatus().isOk()
+        .expectStatus().isFound()
         .expectBody().jsonPath("$.numberID").isEqualTo("20191010");
     } else {
       log.error("No se encontraron datos!");
