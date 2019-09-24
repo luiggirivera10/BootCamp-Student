@@ -1,0 +1,15 @@
+mongo:  
+  image: mongo
+  restart: always
+  volumes: 
+    - database:/data/db
+  ports: 
+    - "27017:27017"
+  
+app:
+  build: .
+  dockerfile: DockerFile 
+  ports: 
+    - "8086:8080"
+  links:
+    - mongo
