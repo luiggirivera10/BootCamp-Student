@@ -3,6 +3,8 @@ package com.everis.student.app;
 import com.everis.student.app.config.SwaggerConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.reactive.config.ResourceHandlerRegistry;
 
@@ -14,6 +16,7 @@ import org.springframework.web.reactive.config.ResourceHandlerRegistry;
  */
 @SpringBootApplication
 @Import(SwaggerConfiguration.class)
+@EnableEurekaClient
 public class SpringStudentApplication {
 
   /**

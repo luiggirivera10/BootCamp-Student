@@ -89,7 +89,7 @@ public void findByIdTest() {
  */
   @Test
   public void newTest() {
-    final Student student = new Student("Martino", "Masculinox", new Date(),"DNI", "00000000");
+    final Student student = new Student("Martinox", "Masculino", new Date(),"DNI", "00000001");
     if (student != null) {
       client.post().uri("/api/v1.0/students")
        .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -170,7 +170,7 @@ public void findByIdTest() {
    */
   @Test
   public void deleteTest() {
-    final Student student = service.findByNumberID("00000001").block();
+    final Student student = service.findByNumberID("00000000").block();
     if (student != null) {
       client.delete()
         .uri("/api/v1.0/students/{id}",Collections.singletonMap("id", student.getId()))
