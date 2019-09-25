@@ -89,7 +89,7 @@ public void findByIdTest() {
  */
   @Test
   public void newTest() {
-    final Student student = new Student("Martinox", "Masculino", new Date(),"DNI", "00000001");
+    final Student student = new Student("Martino", "Masculino", new Date(),"DNI", "00000000");
     if (student != null) {
       client.post().uri("/api/v1.0/students")
        .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -99,7 +99,7 @@ public void findByIdTest() {
        .expectStatus().isCreated()
        .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
        .expectBody()
-       .jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Martinox");
+       .jsonPath("$.id").isNotEmpty().jsonPath("$.name").isEqualTo("Martino");
     }
   }
 
@@ -108,8 +108,8 @@ public void findByIdTest() {
    */
   @Test
   public void updateTest() {
-    final Student student = service.findName("Robertxxx").block();
-    final Student studentEditado = new Student("Robert", "Masculino", 
+    final Student student = service.findName("Robert").block();
+    final Student studentEditado = new Student("Robertxxx", "Masculino", 
           new Date(),"DNI", "20090806");
     if (student != null) {
       client.put().uri("/api/v1.0/students/{id}",
@@ -122,7 +122,7 @@ public void findByIdTest() {
      .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
      .expectBody()
      .jsonPath("$.id").isNotEmpty()
-     .jsonPath("$.name").isEqualTo("Robert")
+     .jsonPath("$.name").isEqualTo("Robertxxx")
      .jsonPath("$.numberID").isEqualTo("20090806");
     } else {
       log.error("No se encontraron datos!");
@@ -170,7 +170,7 @@ public void findByIdTest() {
    */
   @Test
   public void deleteTest() {
-    final Student student = service.findByNumberID("00000000").block();
+    final Student student = service.findByNumberID("00000001").block();
     if (student != null) {
       client.delete()
         .uri("/api/v1.0/students/{id}",Collections.singletonMap("id", student.getId()))
