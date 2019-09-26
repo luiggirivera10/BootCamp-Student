@@ -40,7 +40,7 @@ public class StudentRestController {
   /**
  * log.
  */
-  private static final Logger log = LoggerFactory.getLogger(StudentRestController.class);
+  private static final Logger LOG = LoggerFactory.getLogger(StudentRestController.class);
 
   /**
    * Servicio listar todo.
@@ -52,7 +52,7 @@ public class StudentRestController {
                   student.setName(student.getName());
                   return student;
                 })
-        .doOnNext(stu -> log.info(stu.getName()));
+        .doOnNext(stu -> LOG.info(stu.getName()));
     return students;
   }
   /**
@@ -64,7 +64,7 @@ public class StudentRestController {
  public Mono<Student> findById(@PathVariable final String id) {
     final Flux<Student> students = studentRep.findAll();
     final Mono<Student> student = students.filter(s -> s.getId().equals(id))
-                        .next().doOnNext(stu -> log.info(stu.getName()));
+                        .next().doOnNext(stu -> LOG.info(stu.getName()));
     return student;
   }
   /**
@@ -75,7 +75,7 @@ public class StudentRestController {
   @GetMapping("/students/name/{name}")
   public Flux<Student> findByName(@PathVariable ("name") final String name) {
     return studentRep.findByName(name)
-        .doOnNext(stu -> log.info(stu.getName()));
+        .doOnNext(stu -> LOG.info(stu.getName()));
   }
 
   /**
@@ -83,7 +83,7 @@ public class StudentRestController {
  */
   @GetMapping("/students/nombre/{name}")
   public Mono<ResponseEntity<Student>> getByName(@PathVariable ("name") final String name) {
-    return studentRep.obtenerPorName(name).doOnNext(stu -> log.info(stu.getName()))
+    return studentRep.obtenerPorName(name).doOnNext(stu -> LOG.info(stu.getName()))
               .map(student -> new ResponseEntity<>(student, HttpStatus.FOUND))
               .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }

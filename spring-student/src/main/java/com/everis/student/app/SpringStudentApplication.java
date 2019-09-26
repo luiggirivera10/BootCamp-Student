@@ -16,17 +16,21 @@ import org.springframework.web.reactive.config.ResourceHandlerRegistry;
  */
 @SpringBootApplication
 @Import(SwaggerConfiguration.class)
-@EnableEurekaClient
+//@EnableEurekaClient
+@EnableDiscoveryClient
 public class SpringStudentApplication {
 
   /**
  * Main.
  */
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     SpringApplication.run(SpringStudentApplication.class, args);
   }
-
-  public void addResourceHandlers(ResourceHandlerRegistry regisry) {
+  /**
+   * .
+   * @param regisry
+   */
+  public void addResourceHandlers(final ResourceHandlerRegistry regisry) {
     regisry.addResourceHandler("swagger-ui.html")
       .addResourceLocations("classpath:/META-INF/resources/");
   }

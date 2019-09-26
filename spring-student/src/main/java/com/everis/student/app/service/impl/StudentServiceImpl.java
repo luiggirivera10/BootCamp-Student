@@ -86,5 +86,4 @@ public class StudentServiceImpl implements StudentService {
   public Mono<Student> obtenerPorName(final String name) {
     return studentRepository.findName(name);
   }
-
 }

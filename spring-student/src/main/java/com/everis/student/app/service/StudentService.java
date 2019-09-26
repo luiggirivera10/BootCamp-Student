@@ -15,40 +15,40 @@ public interface StudentService {
   /**
  * findAll.
  */
-  public Flux<Student> findAll();
+  Flux<Student> findAll();
 
   /**
  * findById.
  */
-  public Mono<Student> findById(String id);
+  Mono<Student> findById(String id);
 
   /**
  * save.
  */
-  public Mono<Student> save(Student student);
+  Mono<Student> save(Student student);
 
   /**
  * Delete.
  */
-  public Mono<Void> delete(Student student);
+  Mono<Void> delete(Student student);
 
   /**
  * findByName.
  */
-  public Flux<Student> findByName(String name);
+  Flux<Student> findByName(String name);
 
   /**
  * findByNumberID.
  */
-  public Mono<Student> findByNumberID(String nummberID);
+  Mono<Student> findByNumberID(String nummberID);
 
   /**
  * findByBirthdateBetween.
  */
-  public Flux<Student> findByBirthdateBetween(Date birthdate, Date birthdate1);
+  Flux<Student> findByBirthdateBetween(Date birthdate, Date birthdate1);
 
   /**
  * Solo para TEST.
  */
-  public Mono<Student> obtenerPorName(String name);
+  Mono<Student> obtenerPorName(String name);
 }
