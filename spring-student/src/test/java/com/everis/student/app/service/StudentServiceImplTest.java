@@ -25,8 +25,7 @@ import reactor.test.StepVerifier;
  */
 @RunWith(SpringRunner.class)
 @AutoConfigureWebTestClient
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class StudentServiceImplTest {
 
   /**
@@ -45,12 +44,12 @@ public class StudentServiceImplTest {
    * finaAll.
    */
   @Test
-  public void findAll_ServiceImplTest() {
+  public void findallserviceimpltest() {
     final Student student = new Student();
-    student.setName("Walter");
-    student.setGender("Masculino");
+    student.setName("Abelardo");
+    student.setGender("Femenino");
     student.setBirthdate(new Date());
-    student.setTypeID("DNI");
+    student.setTypeID("CARNET");
     student.setNumberID("55556666");
     
     when(studentService.findAll()).thenReturn(Flux.just(student));
@@ -62,33 +61,33 @@ public class StudentServiceImplTest {
    * findById-Exist.
    */
   @Test
-  public void findById_exist_ServiceImplTest() {
-    final Student parent2 = new Student();
-    parent2.setId("102");
-    parent2.setName("Ramon");
-    parent2.setGender("Masculino");
-    parent2.setBirthdate(new Date());
-    parent2.setTypeID("DNI");
-    parent2.setNumberID("10210210");
-    when(studentRepository.findById(parent2.getId())).thenReturn(Mono.just(parent2));
-    final Mono<Student> actual = studentRepository.findById(parent2.getId());
-    assertResults(actual, parent2);
+  public void findByidexistserviceimpltest() {
+    final Student student2 = new Student();
+    student2.setId("102");
+    student2.setName("Ramon");
+    student2.setGender("Masculino");
+    student2.setBirthdate(new Date());
+    student2.setTypeID("CARNET");
+    student2.setNumberID("10210210");
+    when(studentRepository.findById(student2.getId())).thenReturn(Mono.just(student2));
+    final Mono<Student> actual = studentRepository.findById(student2.getId());
+    assertResults(actual, student2);
   }
 
   /**
    * findById-not-Exist.
    */
   @Test
-  public void findById_not_exist_ServiceImplTest() {
-    final Student s = new Student();
-    s.setId("101");
-    s.setName("Tito");
-    s.setGender("Masculino");
-    s.setBirthdate(new Date());
-    s.setTypeID("DNI");
-    s.setNumberID("10110110");
-    when(studentRepository.findById(s.getId())).thenReturn(Mono.empty());
-    final Mono<Student> actual = studentRepository.findById(s.getId());
+  public void findByIdnotexistServiceImplTest() {
+    final Student student = new Student();
+    student.setId("101");
+    student.setName("Tito");
+    student.setGender("Masculino");
+    student.setBirthdate(new Date());
+    student.setTypeID("DNI");
+    student.setNumberID("10110110");
+    when(studentRepository.findById(student.getId())).thenReturn(Mono.empty());
+    final Mono<Student> actual = studentRepository.findById(student.getId());
     assertResults(actual);
   }
   
@@ -97,17 +96,17 @@ public class StudentServiceImplTest {
    */
   @Test
   public void saveServiceImplTest() {
-    final Student s = new Student();
-    s.setId("10");
-    s.setName("Victor");
-    s.setGender("Masculino");
-    s.setBirthdate(new Date());
-    s.setTypeID("DNI");
-    s.setNumberID("44443333");
-    s.setCreatedAt(new Date());
-    when(studentRepository.save(s)).thenReturn(Mono.just(s));
-    final Mono<Student> actual = studentService.save(s);
-    assertResults(actual, s);
+    final Student student = new Student();
+    student.setId("10");
+    student.setName("Victor");
+    student.setGender("Masculino");
+    student.setBirthdate(new Date());
+    student.setTypeID("DNI");
+    student.setNumberID("44443333");
+    student.setCreatedAt(new Date());
+    when(studentRepository.save(student)).thenReturn(Mono.just(student));
+    final Mono<Student> actual = studentService.save(student);
+    assertResults(actual, student);
   }
   
   /**
@@ -131,42 +130,42 @@ public class StudentServiceImplTest {
    * findByNumberID.
    */
   @Test
-  public void findBynNumberID_ServiceImplTest() {
-    final Student s = new Student();
-    s.setId("dekweowe");
-    s.setName("cristohper");
-    s.setGender("male");
-    s.setBirthdate(new Date());
-    s.setTypeID("dni");
-    s.setNumberID("736723727");
-    final String numberID = "736723727";
-    when(studentRepository.findByNumberID(numberID)).thenReturn(Mono.just(s));
+  public void findBynnumberidserviceimplTest() {
+    final Student student = new Student();
+    student.setId("dekweowe");
+    student.setName("cristohper");
+    student.setGender("male");
+    student.setBirthdate(new Date());
+    student.setTypeID("dni");
+    student.setNumberID("736723720");
+    final String numberID = "736723720";
+    when(studentRepository.findByNumberID(numberID)).thenReturn(Mono.just(student));
     final Mono<Student> actual = studentService.findByNumberID(numberID);
-    assertResults(actual,s);
+    assertResults(actual,student);
   }
 
   /**
    * findByName.
    */
   @Test
-  public void findByName_ServiceImplTest() {
-    final Student s = new Student();
-    s.setId("dekweowe");
-    s.setName("cristohper");
-    s.setGender("male");
-    s.setBirthdate(new Date());
-    s.setTypeID("dni");
-    s.setNumberID("736723727");
+  public void findByNameServiceImplTest() {
+    final Student student = new Student();
+    student.setId("dekweowe");
+    student.setName("cristohper");
+    student.setGender("male");
+    student.setBirthdate(new Date());
+    student.setTypeID("dni");
+    student.setNumberID("736723727");
     final String name = "736723727";
-    when(studentRepository.findByName(name)).thenReturn(Flux.just(s));
+    when(studentRepository.findByName(name)).thenReturn(Flux.just(student));
     final Flux<Student> actual = studentService.findByName(name);
-    assertResults(actual,s);
+    assertResults(actual,student);
   }
 
   /**
    * assertResults.
    */
-  private void assertResults(Publisher<Student> publisher, Student... expectedProducts) {
+  private void assertResults(final Publisher<Student> publisher, Student... expectedProducts) {
     StepVerifier
         .create(publisher)
         .expectNext(expectedProducts)
