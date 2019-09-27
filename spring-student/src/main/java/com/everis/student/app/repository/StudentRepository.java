@@ -34,4 +34,5 @@ public interface StudentRepository extends ReactiveMongoRepository<Student, Stri
  */
   @Query("{ 'name': ?0 }")
   Mono<Student> findName(String name);
+
 }
