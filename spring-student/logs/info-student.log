@@ -1,0 +1,161 @@
+27-09-2019 10:34:51.049 [restartedMain] INFO  c.e.s.app.SpringStudentApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+27-09-2019 10:34:52.427 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data repositories in DEFAULT mode.
+27-09-2019 10:34:52.505 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 74ms. Found 1 repository interfaces.
+27-09-2019 10:34:52.511 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data repositories in DEFAULT mode.
+27-09-2019 10:34:52.517 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 5ms. Found 0 repository interfaces.
+27-09-2019 10:34:52.659 [restartedMain] WARN  o.s.boot.actuate.endpoint.EndpointId.logWarning - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+27-09-2019 10:34:52.968 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope.setSerializationId - BeanFactory id=e189b19e-b0c0-3cdf-be06-6281aa589aab
+27-09-2019 10:34:53.369 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$8050cd45] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+27-09-2019 10:34:53.374 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.cloud.sleuth.instrument.web.client.TraceWebClientAutoConfiguration$NettyConfiguration' of type [org.springframework.cloud.sleuth.instrument.web.client.TraceWebClientAutoConfiguration$NettyConfiguration$$EnhancerBySpringCGLIB$$62ccf4cb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+27-09-2019 10:34:54.386 [restartedMain] INFO  org.mongodb.driver.cluster.info - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+27-09-2019 10:34:55.013 [restartedMain] INFO  org.mongodb.driver.cluster.info - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+27-09-2019 10:34:55.014 [restartedMain] INFO  org.mongodb.driver.cluster.info - Adding discovered server localhost:27017 to client view of cluster
+27-09-2019 10:34:55.049 [cluster-ClusterId{value='5d8e2c1fb6195b0678f5848d', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection.info - Opened connection [connectionId{localValue:2, serverValue:2313}] to localhost:27017
+27-09-2019 10:34:55.054 [cluster-ClusterId{value='5d8e2c1fb6195b0678f5848d', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster.info - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 2, 0]}, minWireVersion=0, maxWireVersion=8, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3074055}
+27-09-2019 10:34:55.056 [cluster-ClusterId{value='5d8e2c1fb6195b0678f5848d', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster.info - Discovered cluster type of STANDALONE
+27-09-2019 10:34:55.269 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer.startServer - Unable to start LiveReload server
+27-09-2019 10:34:55.307 [cluster-ClusterId{value='5d8e2c1eb6195b0678f5848c', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection.info - Opened connection [connectionId{localValue:1, serverValue:2314}] to localhost:27017
+27-09-2019 10:34:55.310 [cluster-ClusterId{value='5d8e2c1eb6195b0678f5848c', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster.info - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 2, 0]}, minWireVersion=0, maxWireVersion=8, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=2735183}
+27-09-2019 10:34:56.721 [restartedMain] WARN  c.n.c.sources.URLConfigurationSource.<init> - No URLs will be polled as dynamic configuration sources.
+27-09-2019 10:34:56.722 [restartedMain] INFO  c.n.c.sources.URLConfigurationSource.<init> - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+27-09-2019 10:34:56.738 [restartedMain] INFO  c.n.config.DynamicPropertyFactory.getInstance - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@33f4149c
+27-09-2019 10:34:56.935 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver.<init> - Exposing 20 endpoint(s) beneath base path '/actuator'
+27-09-2019 10:34:57.122 [restartedMain] WARN  c.n.c.sources.URLConfigurationSource.<init> - No URLs will be polled as dynamic configuration sources.
+27-09-2019 10:34:57.122 [restartedMain] INFO  c.n.c.sources.URLConfigurationSource.<init> - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+27-09-2019 10:34:58.945 [restartedMain] INFO  o.s.c.n.eureka.InstanceInfoFactory.create - Setting initial instance status as: STARTING
+27-09-2019 10:34:58.984 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.<init> - Initializing Eureka in region us-east-1
+27-09-2019 10:34:59.053 [restartedMain] INFO  c.n.d.p.DiscoveryJerseyProvider.<init> - Using JSON encoding codec LegacyJacksonJson
+27-09-2019 10:34:59.054 [restartedMain] INFO  c.n.d.p.DiscoveryJerseyProvider.<init> - Using JSON decoding codec LegacyJacksonJson
+27-09-2019 10:34:59.224 [restartedMain] INFO  c.n.d.p.DiscoveryJerseyProvider.<init> - Using XML encoding codec XStreamXml
+27-09-2019 10:34:59.225 [restartedMain] INFO  c.n.d.p.DiscoveryJerseyProvider.<init> - Using XML decoding codec XStreamXml
+27-09-2019 10:34:59.436 [restartedMain] INFO  c.n.d.s.r.aws.ConfigClusterResolver.getClusterEndpoints - Resolving eureka endpoints via configuration
+27-09-2019 10:34:59.792 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Disable delta property : false
+27-09-2019 10:34:59.793 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Single vip registry refresh property : null
+27-09-2019 10:34:59.794 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Force full registry fetch : false
+27-09-2019 10:34:59.794 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Application is null : false
+27-09-2019 10:34:59.794 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Registered Applications size is zero : true
+27-09-2019 10:34:59.795 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Application version is -1: true
+27-09-2019 10:34:59.796 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry - Getting all instance registry info from the eureka server
+27-09-2019 10:35:00.063 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry - The response status is 200
+27-09-2019 10:35:00.066 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.initScheduledTasks - Starting heartbeat executor: renew interval is: 30
+27-09-2019 10:35:00.070 [restartedMain] INFO  c.n.discovery.InstanceInfoReplicator.<init> - InstanceInfoReplicator onDemand update allowed rate per min is 4
+27-09-2019 10:35:00.075 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.<init> - Discovery Client initialized at timestamp 1569598500074 with initial instances count: 0
+27-09-2019 10:35:00.079 [restartedMain] INFO  o.s.c.n.e.s.EurekaServiceRegistry.register - Registering application SPRING-STUDENT with eureka with status UP
+27-09-2019 10:35:00.080 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient.notify - Saw local status change event StatusChangeEvent [timestamp=1569598500080, current=UP, previous=STARTING]
+27-09-2019 10:35:00.083 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient.register - DiscoveryClient_SPRING-STUDENT/LIM-BF4WDC2.usersad.everis.int:spring-student:8084: registering service...
+27-09-2019 10:35:00.083 [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper.start - Documentation plugins bootstrapped
+27-09-2019 10:35:00.106 [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper.bootstrapDocumentationPlugins - Found 1 custom documentation plugin(s)
+27-09-2019 10:35:00.220 [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner.scan - Scanning for api listing references
+27-09-2019 10:35:00.678 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient.register - DiscoveryClient_SPRING-STUDENT/LIM-BF4WDC2.usersad.everis.int:spring-student:8084 - registration status: 204
+27-09-2019 10:35:01.029 [restartedMain] INFO  o.s.b.w.e.netty.NettyWebServer.start - Netty started on port(s): 8084
+27-09-2019 10:35:01.033 [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration.onApplicationEvent - Updating port to 8084
+27-09-2019 10:35:01.508 [restartedMain] INFO  c.e.s.app.SpringStudentApplication.logStarted - Started SpringStudentApplication in 26.962 seconds (JVM running for 28.468)
+27-09-2019 10:35:30.068 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Disable delta property : false
+27-09-2019 10:35:30.069 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Single vip registry refresh property : null
+27-09-2019 10:35:30.069 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Force full registry fetch : false
+27-09-2019 10:35:30.070 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Application is null : false
+27-09-2019 10:35:30.070 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Registered Applications size is zero : true
+27-09-2019 10:35:30.070 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.fetchRegistry - Application version is -1: false
+27-09-2019 10:35:30.071 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry - Getting all instance registry info from the eureka server
+27-09-2019 10:35:30.099 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient.getAndStoreFullRegistry - The response status is 200
+27-09-2019 10:39:08.420 [nioEventLoopGroup-2-2] INFO  org.mongodb.driver.connection.info - Opened connection [connectionId{localValue:3, serverValue:2321}] to localhost:27017
+27-09-2019 10:39:08.657 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:39:08.658 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:39:08.659 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:39:08.661 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:39:08.662 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:39:08.663 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:39:08.663 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:39:08.664 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:39:08.665 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:39:08.666 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:39:08.666 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:39:08.667 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:39:59.811 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver.getClusterEndpoints - Resolving eureka endpoints via configuration
+27-09-2019 10:40:20.353 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:40:20.354 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:40:20.355 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:40:20.358 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:40:20.360 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:40:20.361 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:40:20.363 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:40:20.364 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:40:20.365 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:40:20.367 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:40:20.368 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:40:20.369 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:41:28.995 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:41:28.996 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:41:28.997 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:41:28.997 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:41:28.998 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:41:28.998 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:41:28.999 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:41:29.000 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:41:29.001 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:41:29.002 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:41:29.004 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:41:29.005 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:44:59.824 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver.getClusterEndpoints - Resolving eureka endpoints via configuration
+27-09-2019 10:46:42.028 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:46:42.029 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:46:42.030 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:46:42.030 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:46:42.031 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:46:42.032 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:46:42.033 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:46:42.036 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:46:42.037 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:46:42.038 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:46:42.039 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:46:42.040 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:49:59.838 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver.getClusterEndpoints - Resolving eureka endpoints via configuration
+27-09-2019 10:52:39.382 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:52:39.384 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:52:39.386 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:52:39.387 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:52:39.388 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:52:39.389 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:52:39.390 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:52:39.390 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:52:39.391 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:52:39.392 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:52:39.402 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:52:39.403 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:52:48.799 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$3 - Flor
+27-09-2019 10:52:58.019 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$4 - Flor
+27-09-2019 10:54:59.855 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver.getClusterEndpoints - Resolving eureka endpoints via configuration
+27-09-2019 10:56:26.423 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:56:26.424 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:56:26.425 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:56:26.426 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:56:26.427 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:56:26.428 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:56:26.428 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:56:26.429 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:56:26.429 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:56:26.430 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:56:26.431 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:56:26.431 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:56:33.274 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Flor
+27-09-2019 10:56:33.275 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Maria
+27-09-2019 10:56:33.276 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Lucia
+27-09-2019 10:56:33.276 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Mariana
+27-09-2019 10:56:33.277 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Romina
+27-09-2019 10:56:33.277 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Jeffer
+27-09-2019 10:56:33.278 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Randyx
+27-09-2019 10:56:33.327 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Robertxxx
+27-09-2019 10:56:33.328 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Forlan
+27-09-2019 10:56:33.328 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Alejandro
+27-09-2019 10:56:33.329 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Gonzalo
+27-09-2019 10:56:33.330 [nioEventLoopGroup-2-2] INFO  c.e.s.a.c.StudentRestController.lambda$1 - Martino
+27-09-2019 10:57:11.895 [RMI TCP Connection(38)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin.shutdown - Application shutdown requested.
+27-09-2019 10:57:11.995 [RMI TCP Connection(38)-127.0.0.1] INFO  o.s.c.n.e.s.EurekaServiceRegistry.deregister - Unregistering application SPRING-STUDENT with eureka with status DOWN
+27-09-2019 10:57:12.007 [RMI TCP Connection(38)-127.0.0.1] WARN  c.netflix.discovery.DiscoveryClient.notify - Saw local status change event StatusChangeEvent [timestamp=1569599832007, current=DOWN, previous=UP]
+27-09-2019 10:57:12.024 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient.register - DiscoveryClient_SPRING-STUDENT/LIM-BF4WDC2.usersad.everis.int:spring-student:8084: registering service...
+27-09-2019 10:57:12.120 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient.register - DiscoveryClient_SPRING-STUDENT/LIM-BF4WDC2.usersad.everis.int:spring-student:8084 - registration status: 204
+27-09-2019 10:57:12.429 [RMI TCP Connection(38)-127.0.0.1] INFO  org.mongodb.driver.connection.info - Closed connection [connectionId{localValue:3, serverValue:2321}] to localhost:27017 because the pool has been closed.
+27-09-2019 10:57:14.746 [RMI TCP Connection(38)-127.0.0.1] INFO  c.netflix.discovery.DiscoveryClient.shutdown - Shutting down DiscoveryClient ...
+27-09-2019 10:57:17.752 [RMI TCP Connection(38)-127.0.0.1] INFO  c.netflix.discovery.DiscoveryClient.unregister - Unregistering ...
+27-09-2019 10:57:17.765 [RMI TCP Connection(38)-127.0.0.1] INFO  c.netflix.discovery.DiscoveryClient.unregister - DiscoveryClient_SPRING-STUDENT/LIM-BF4WDC2.usersad.everis.int:spring-student:8084 - deregister  status: 200
+27-09-2019 10:57:17.852 [RMI TCP Connection(38)-127.0.0.1] INFO  c.netflix.discovery.DiscoveryClient.shutdown - Completed shut down of DiscoveryClient
