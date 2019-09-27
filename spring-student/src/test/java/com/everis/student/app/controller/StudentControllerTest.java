@@ -38,21 +38,29 @@ public class StudentControllerTest {
    */
   @Autowired
   private StudentRepository studentRepository;
+  
+  /**
+   * .
+   */
   private WebTestClient client;
+  
+  /**
+   * .
+   */
   private List<Student> expectedStudents;
 
   /**
    * .
    */
   @BeforeEach
-  void setUp() {
+  private void setUp() {
     client = WebTestClient
       .bindToApplicationContext(applicationContext)
       .configureClient()
       .baseUrl("/api/v1.0")
       .build();
 
-    Flux<Student> initData = studentRepository.deleteAll()
+    final Flux<Student> initData = studentRepository.deleteAll()
         .thenMany(Flux.just(
         Student.builder().id("1").name("Andres").gender("Masculino")
         .birthdate(new Date()).typeID("DNI").numberID("74306050").build(),
@@ -68,7 +76,7 @@ public class StudentControllerTest {
    * Test FindAll.
    */
   @Test
-  void findAll() {
+  private void findAll() {
 
     client.get().uri("/students").exchange()
       .expectStatus().isOk();
@@ -78,8 +86,8 @@ public class StudentControllerTest {
    * Test Save.
    */
   @Test
-  void save() {
-    Student expectedStud = expectedStudents.get(0);
+  private void save() {
+    final Student expectedStud = expectedStudents.get(0);
     client.post().uri("/students").body(Mono.just(expectedStud), Student.class).exchange()
       .expectStatus().isCreated();
   }
@@ -88,9 +96,9 @@ public class StudentControllerTest {
    * Test findByID.
    */
   @Test
-  void findById() {
+  private void findById() {
 
-    String id = "1";
+    final String id = "1";
     client.get().uri("/students/{id}", id).exchange()
       .expectStatus().isOk();
   }
@@ -99,9 +107,9 @@ public class StudentControllerTest {
    * Test Update.
    */
   @Test
-  void update() {
+  private void update() {
 
-    Student expectedStud = expectedStudents.get(0);
+    final Student expectedStud = expectedStudents.get(0);
 
     client.put().uri("/students/{id}", expectedStud.getId())
     .body(Mono.just(expectedStud), Student.class).exchange()
@@ -112,9 +120,9 @@ public class StudentControllerTest {
    * Test Delete.
    */
   @Test
-  void delete() {
+  private void delete() {
 
-    Student studDelete = expectedStudents.get(0);
+    final Student studDelete = expectedStudents.get(0);
     client.delete().uri("/students/{id}", studDelete.getId()).exchange()
       .expectStatus().isOk();
   }
@@ -123,9 +131,9 @@ public class StudentControllerTest {
    * FindByNumberID.
    */
   @Test
-  void findByNumberID() {
+  private void findByNumberID() {
 
-    String numberID = "74306051";
+    final String numberID = "74306051";
     client.get().uri("/students/doc/{numberID}", numberID).exchange()
       .expectStatus().isFound();
   }
@@ -134,9 +142,9 @@ public class StudentControllerTest {
    * Test FindByName.
    */
   @Test
-  void findByName() {
+  private void findByName() {
 
-    String name = "Rodrigo";
+    final String name = "Rodrigo";
     client.get().uri("/students/nombre/{name}", name).exchange()
       .expectStatus().isFound();
   }
@@ -145,10 +153,10 @@ public class StudentControllerTest {
    * Test FindByBirthDateBetween.
    */
   @Test
-  void findBybirthdateBetween() {
+  private void findBybirthdateBetween() {
 
-    LocalDate birthdate = LocalDate.of(2018,03,02);
-    LocalDate birthdate1 = LocalDate.of(2019,03,02);
+    final LocalDate birthdate = LocalDate.of(2018,03,02);
+    final LocalDate birthdate1 = LocalDate.of(2019,03,02);
     client.get().uri("/students/date/{birthdate}/{birthdate1}", birthdate,birthdate1).exchange()
         .expectStatus().isOk()
         .expectBodyList(Student.class);
